@@ -1,14 +1,14 @@
 [
 {
-  "modid": "examplemod",
-  "name": "Example Mod",
-  "description": "Example placeholder mod.",
+  "modid": "devoxx",
+  "name": "Devoxx4Kids First8 Mod",
+  "description": "Minecraft workshop mod voor Devoxx4Kids bij First8",
   "version": "${version}",
   "mcversion": "${mcversion}",
   "url": "",
   "updateUrl": "",
-  "authorList": ["ExampleDude"],
-  "credits": "The Forge and FML guys, for making this example",
+  "authorList": ["Devoxx4Kid"],
+  "credits": "Alle coole Minecraft mensen!",
   "logoFile": "",
   "screenshots": [],
   "dependencies": []

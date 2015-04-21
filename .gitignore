@@ -1,3 +1,6 @@
 minecraft-forge/.classpath
+minecraft-forge/.gradle/
+minecraft-forge/.metadata/
+minecraft-forge/bin/
 eclipse/
 setup/
