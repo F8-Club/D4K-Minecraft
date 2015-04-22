@@ -1,9 +1,6 @@
 {
-	"parent": "block/cube_bottom_top",
+    "parent": "block/cube_all",
     "textures": {
-        "bottom": "blocks/tnt_bottom",
-        "top": "blocks/tnt_top",
-        "side": "blocks/tnt_side"
+        "all": "devoxx:blocks/boemBlok"
     }
-	   
 }

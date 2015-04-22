@@ -3,29 +3,41 @@ package nl.first8.devoxx4kids.minecraft.block1;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockTNT;
 import net.minecraft.block.material.Material;
+import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.client.renderer.block.statemap.IStateMapper;
+import net.minecraft.client.renderer.block.statemap.StateMap;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityTNTPrimed;
 import net.minecraft.init.Blocks;
 import net.minecraft.util.BlockPos;
+import net.minecraft.util.RegistryNamespacedDefaultedByKey;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
+import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.registry.EntityRegistry;
 import net.minecraftforge.fml.common.registry.GameRegistry;
+import nl.first8.devoxx4kids.minecraft.other.DevoxxBlok;
 
-public class BoemBlock extends BlockTNT
+public class BoemBlok extends BlockTNT implements DevoxxBlok
 {
 
-	private final String name = "boemblok";
+	private static final int TNT_ID = 46;
 
-	public BoemBlock() {
+	private final String name = "boemBlok";
+	
+
+	public BoemBlok() {
 		super();
 		this.setCreativeTab(CreativeTabs.tabBlock);
 		super.setUnlocalizedName(name);
 		GameRegistry.registerBlock(this, name);
+		IStateMapper mapper = new StateMap.Builder().addPropertiesToIgnore(new IProperty[] {BlockTNT.EXPLODE}).build();
+		ModelLoader.setCustomStateMapper(this, mapper);
 	}
 
 	@Override
@@ -42,9 +54,11 @@ public class BoemBlock extends BlockTNT
 	        }
 	}
 
+	@Override
 	public String getName() {
 		return name;
 	}
+
 	
 	
 	
