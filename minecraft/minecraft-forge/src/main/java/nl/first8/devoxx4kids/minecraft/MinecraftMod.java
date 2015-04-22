@@ -21,6 +21,7 @@ import net.minecraftforge.fml.relauncher.Side;
 import nl.first8.devoxx4kids.minecraft.block1.*;
 import nl.first8.devoxx4kids.minecraft.block2.TestBlok;
 import nl.first8.devoxx4kids.minecraft.other.DevoxxBlok;
+import nl.first8.devoxx4kids.minecraft.other.ModBase;
 
 @Mod(modid = MinecraftMod.MODID, version = MinecraftMod.VERSION)
 public class MinecraftMod extends ModBase {
@@ -35,7 +36,7 @@ public class MinecraftMod extends ModBase {
 
 	@EventHandler
 	public void init(FMLInitializationEvent event) {
-		addBlock(event, new BoemBlok());
+		//addBlock(event, new BoemBlok());
 		addBlock(event, new TestBlok());
 
 	}

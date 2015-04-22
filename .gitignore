@@ -4,6 +4,7 @@ minecraft/minecraft-forge/bin/
 minecraft/minecraft-forge/reference/
 minecraft/minecraft-forge/eclipse/.metadata/.plugins/
 minecraft/minecraft-forge/eclipse/saves/
+minecraft/minecraft-forge/eclipse/logs/
 minecraft/eclipse/
 greenfoot/greenfoot-bluej/
 setup/*

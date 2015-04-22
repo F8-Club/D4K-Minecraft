@@ -5,6 +5,7 @@ import net.minecraft.block.BlockTNT;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.client.renderer.BlockModelShapes;
 import net.minecraft.client.renderer.block.statemap.IStateMapper;
 import net.minecraft.client.renderer.block.statemap.StateMap;
 import net.minecraft.creativetab.CreativeTabs;
@@ -26,8 +27,6 @@ import nl.first8.devoxx4kids.minecraft.other.DevoxxBlok;
 public class BoemBlok extends BlockTNT implements DevoxxBlok
 {
 
-	private static final int TNT_ID = 46;
-
 	private final String name = "boemBlok";
 	
 
@@ -36,8 +35,6 @@ public class BoemBlok extends BlockTNT implements DevoxxBlok
 		this.setCreativeTab(CreativeTabs.tabBlock);
 		super.setUnlocalizedName(name);
 		GameRegistry.registerBlock(this, name);
-		IStateMapper mapper = new StateMap.Builder().addPropertiesToIgnore(new IProperty[] {BlockTNT.EXPLODE}).build();
-		ModelLoader.setCustomStateMapper(this, mapper);
 	}
 
 	@Override
@@ -57,6 +54,11 @@ public class BoemBlok extends BlockTNT implements DevoxxBlok
 	@Override
 	public String getName() {
 		return name;
+	}
+
+	@Override
+	public IProperty getProperty() {
+		return BlockTNT.EXPLODE;
 	}
 
 	

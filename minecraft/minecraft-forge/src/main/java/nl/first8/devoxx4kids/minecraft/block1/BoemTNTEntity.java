@@ -27,7 +27,7 @@ public class BoemTNTEntity extends EntityTNTPrimed
 	
 	private void explode()
     {
-        float explosie = 4.0F;
+        float explosie = 4.0F; //Pas deze waarde aan.. als je durft!
         this.worldObj.createExplosion(this, this.posX, this.posY + (double)(this.height / 2.0F), this.posZ, explosie, true);
     }
 	
