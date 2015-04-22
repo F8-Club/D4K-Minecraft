@@ -1,7 +1,8 @@
-minecraft-forge/.classpath
-minecraft-forge/.gradle/
-minecraft-forge/bin/
-eclipse/
+minecraft/minecraft-forge/.classpath
+minecraft/minecraft-forge/.gradle/
+minecraft/minecraft-forge/bin/
+minecraft/eclipse/
+greenfoot/greenfoot-bluej/
 setup/
 !setup/*.bat
 
