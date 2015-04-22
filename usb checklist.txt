@@ -1,0 +1,17 @@
+Naast de bestanden uit Git (documenten en opdrachten), hebben we ook het volgende 
+nodig in de folder setup, met batch bestanden om alles te installeren.
+
+setup/
+bluej314-greenfoot241-standalone.zip
+eclipse-jee-luna-SR2-macosx-cocoa-x86_64.tar.gz
+eclipse-jee-luna-SR2-win32-x86_64.zip
+eclipse-jee-luna-SR2-win32.zip
+forge-1.8-11.14.1.1375-src.zip
+jdk-7u79-macosx-x64.dmg
+jdk-7u79-windows-i586.exe
+jdk-7u79-windows-x64.exe
+run_eclipse_greenfoot.bat
+setup_all_x64.bat
+setup_eclipse_greenfoot.bat
+setup_java_x64.bat
+
