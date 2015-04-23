@@ -28,34 +28,33 @@ public class TestBlok extends Block implements NamedModel {
 
 	public TestBlok() {
 		super(Material.rock);
-		// setCreativeTab(CreativeTabs.tabBlock);
-		//register();
-		
+		setCreativeTab(CreativeTabs.tabBlock);
+		// setLightLevel(1.0F);
+		// register();
+
 	}
-	
+
 	/**
-     * Get the Item that this Block should drop when harvested.
-     *  
-     * @param fortune the level of the Fortune enchantment on the player's tool
-     */
-	public Item getItemDropped(IBlockState state, Random rand, int fortune)
-    {
-        return Items.diamond;
-    }
+	 * Get the Item that this Block should drop when harvested.
+	 */
+	public Item getItemDropped(IBlockState state, Random rand, int fortune) {
+		return Items.diamond;
+	}
 
-    /**
-     * Returns the quantity of items to drop on block destruction.
-     */
-    public int quantityDropped(Random random)
-    {
-        return this == Blocks.lapis_ore ? 4 + random.nextInt(5) : 1;
-    }
-    
-    public void onBlockDestroyedByPlayer(World worldIn, BlockPos pos, IBlockState state) {
-    	worldIn.playSound(d(pos.getX()), d(pos.getY()), d(pos.getZ()), "dig.stone", 1.0f, 1.0f, false);
-    	worldIn.playSound(d(pos.getX()), d(pos.getY()), d(pos.getZ()), "mob.cow.say", 1.0f, 1.0f, false);
-    }
+	/**
+	 * Returns the quantity of items to drop on block destruction.
+	 */
+	public int quantityDropped(Random random) {
+		return 5;
+	}
 
+	public void onBlockDestroyedByPlayer(World worldIn, BlockPos pos,
+			IBlockState state) {
+		worldIn.playSound(d(pos.getX()), d(pos.getY()), d(pos.getZ()),
+				"dig.stone", 1.0f, 1.0f, false);
+		worldIn.playSound(d(pos.getX()), d(pos.getY()), d(pos.getZ()),
+				"mob.cow.say", 1.0f, 1.0f, false);
+	}
 
 	@Override
 	public String getName() {
@@ -66,12 +65,12 @@ public class TestBlok extends Block implements NamedModel {
 	public IProperty getProperty() {
 		return null;
 	}
-	
+
 	private void register() {
 		setUnlocalizedName(name);
 		GameRegistry.registerBlock(this, name);
 	}
-	
+
 	private double d(int x) {
 		return Integer.valueOf(x).doubleValue();
 	}
