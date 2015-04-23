@@ -1,4 +1,4 @@
-package nl.first8.devoxx4kids.minecraft.block2;
+package nl.first8.devoxx4kids.minecraft.blok2;
 
 import java.util.Random;
 
@@ -20,16 +20,16 @@ import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.registry.EntityRegistry;
 import net.minecraftforge.fml.common.registry.GameRegistry;
-import nl.first8.devoxx4kids.minecraft.other.DevoxxBlok;
+import nl.first8.devoxx4kids.minecraft.other.NamedModel;
 
-public class TestBlok extends Block implements DevoxxBlok {
+public class TestBlok extends Block implements NamedModel {
 
 	private final String name = "testBlok";
 
 	public TestBlok() {
 		super(Material.rock);
-		register();
-		setCreativeTab(CreativeTabs.tabBlock);
+		// setCreativeTab(CreativeTabs.tabBlock);
+		//register();
 		
 	}
 	
@@ -70,7 +70,6 @@ public class TestBlok extends Block implements DevoxxBlok {
 	private void register() {
 		setUnlocalizedName(name);
 		GameRegistry.registerBlock(this, name);
-		
 	}
 	
 	private double d(int x) {

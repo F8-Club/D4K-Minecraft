@@ -5,6 +5,8 @@ import net.minecraft.block.BlockTNT;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.IProperty;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.renderer.BlockModelShapes;
+import net.minecraft.client.renderer.ItemModelMesher;
 import net.minecraft.client.renderer.block.statemap.IStateMapper;
 import net.minecraft.client.renderer.block.statemap.StateMap;
 import net.minecraft.client.renderer.entity.RenderItem;
@@ -24,8 +26,9 @@ import net.minecraftforge.fml.common.registry.EntityRegistry;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.common.registry.LanguageRegistry;
 import net.minecraftforge.fml.relauncher.Side;
-import nl.first8.devoxx4kids.minecraft.block1.*;
-import nl.first8.devoxx4kids.minecraft.block2.TestBlok;
+import nl.first8.devoxx4kids.minecraft.blok1.*;
+import nl.first8.devoxx4kids.minecraft.blok2.TestBlok;
+import nl.first8.devoxx4kids.minecraft.blok4.SneeuwBalItem;
 
 public class ModBase {
 	public static final String MODID = "devoxx";
@@ -33,23 +36,39 @@ public class ModBase {
 	
 	public static final RegistryNamespacedDefaultedByKey blockRegistry = net.minecraftforge.fml.common.registry.GameData.getBlockRegistry();
 
-	protected void addBlock(FMLStateEvent event, Block blok) {
-		Item item = Item.getItemFromBlock(blok);
-		// register renders
+	protected void add(FMLStateEvent event, NamedModel namedModel) {
 		if (event.getSide() == Side.CLIENT) {
-			RenderItem renderItem = Minecraft.getMinecraft().getRenderItem();
-			DevoxxBlok devoxxBlok = (DevoxxBlok) blok;
-			ModelResourceLocation location = new ModelResourceLocation(
-					ModBase.MODID + ":" + devoxxBlok.getName(),
-					"inventory");
-			renderItem.getItemModelMesher().register(Item.getItemFromBlock(blok), 0, location);
-			if (devoxxBlok.getProperty() != null) {
-				IStateMapper mapper = new StateMap.Builder().addPropertiesToIgnore(new IProperty[] {BlockTNT.EXPLODE}).build();
-				Minecraft.getMinecraft().getBlockRendererDispatcher().getBlockModelShapes().registerBlockWithStateMapper(blok, mapper);
-			}
-
+			registerItem(namedModel);
+			addCustomMapper(namedModel);
 		}
-
 	}
+
+
+	private void registerItem(NamedModel namedModel) {
+		Item item = determineItem(namedModel);
+		ModelResourceLocation location = new ModelResourceLocation(ModBase.MODID + ":" + namedModel.getName(),					"inventory");
+		ItemModelMesher itemMesher = Minecraft.getMinecraft().getRenderItem().getItemModelMesher();
+		itemMesher.register(item, 0, location);
+	}
+	
+	private Item determineItem(NamedModel namedModel) {
+		if (namedModel instanceof Item) {
+			return (Item) namedModel;
+		} else if (namedModel instanceof Block) {
+			return Item.getItemFromBlock((Block) namedModel);
+		}
+		throw new IllegalArgumentException("Can't register this kind of item: " + namedModel);
+	}
+
+	private void addCustomMapper(NamedModel namedModel) {
+		if (namedModel.getProperty() != null) {
+			IStateMapper mapper = new StateMap.Builder().addPropertiesToIgnore(new IProperty[] {namedModel.getProperty()}).build();
+			if (namedModel instanceof Block) {
+				BlockModelShapes blockModelShapes = Minecraft.getMinecraft().getBlockRendererDispatcher().getBlockModelShapes();
+				blockModelShapes.registerBlockWithStateMapper((Block) namedModel, mapper);
+			}
+		}
+	}
+	
 	
 }

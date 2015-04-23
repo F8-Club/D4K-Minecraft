@@ -1,4 +1,4 @@
-package nl.first8.devoxx4kids.minecraft.block1;
+package nl.first8.devoxx4kids.minecraft.blok1;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockTNT;
@@ -22,9 +22,9 @@ import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.registry.EntityRegistry;
 import net.minecraftforge.fml.common.registry.GameRegistry;
-import nl.first8.devoxx4kids.minecraft.other.DevoxxBlok;
+import nl.first8.devoxx4kids.minecraft.other.NamedModel;
 
-public class BoemBlok extends BlockTNT implements DevoxxBlok
+public class BoemBlok extends BlockTNT implements NamedModel
 {
 
 	private final String name = "boemBlok";
@@ -32,9 +32,8 @@ public class BoemBlok extends BlockTNT implements DevoxxBlok
 
 	public BoemBlok() {
 		super();
-		this.setCreativeTab(CreativeTabs.tabBlock);
-		super.setUnlocalizedName(name);
-		GameRegistry.registerBlock(this, name);
+		//setCreativeTab(CreativeTabs.tabBlock);
+		//register();
 	}
 
 	@Override
@@ -59,6 +58,11 @@ public class BoemBlok extends BlockTNT implements DevoxxBlok
 	@Override
 	public IProperty getProperty() {
 		return BlockTNT.EXPLODE;
+	}
+	
+	private void register() {
+		setUnlocalizedName(name);
+		GameRegistry.registerBlock(this, name);
 	}
 
 	

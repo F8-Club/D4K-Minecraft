@@ -1,4 +1,4 @@
-package nl.first8.devoxx4kids.minecraft.block1;
+package nl.first8.devoxx4kids.minecraft.blok1;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockTNT;
