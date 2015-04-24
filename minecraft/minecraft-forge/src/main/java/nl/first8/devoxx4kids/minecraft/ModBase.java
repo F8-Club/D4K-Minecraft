@@ -13,8 +13,11 @@ import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.client.resources.model.ModelResourceLocation;
 import net.minecraft.item.Item;
 import net.minecraft.util.RegistryNamespacedDefaultedByKey;
+import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLStateEvent;
 import net.minecraftforge.fml.relauncher.Side;
+import nl.first8.devoxx4kids.minecraft.blok6.ErnstigeErts;
 import nl.first8.devoxx4kids.minecraft.other.NamedModel;
 
 public class ModBase {
@@ -30,6 +33,11 @@ public class ModBase {
 			addCustomMapper(namedModel);
 		}
 	}
+	
+	protected void addEvent(Object eventObject) {
+		MinecraftForge.EVENT_BUS.register(eventObject);
+	}
+
 
 	private void registerItem(NamedModel namedModel) {
 		Item item = determineItem(namedModel);

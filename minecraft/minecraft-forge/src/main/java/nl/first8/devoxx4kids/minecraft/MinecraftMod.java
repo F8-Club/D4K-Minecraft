@@ -9,6 +9,8 @@ import nl.first8.devoxx4kids.minecraft.blok2.TestBlok;
 import nl.first8.devoxx4kids.minecraft.blok3.Recepten;
 import nl.first8.devoxx4kids.minecraft.blok4.SneeuwBalItem;
 import nl.first8.devoxx4kids.minecraft.blok5.CreepyEiItem;
+import nl.first8.devoxx4kids.minecraft.blok6.ErnstigeErts;
+import nl.first8.devoxx4kids.minecraft.blok7.SkeletGetThisPartyStarted;
 
 @Mod(modid = MinecraftMod.MODID, version = MinecraftMod.VERSION)
 public class MinecraftMod extends ModBase {
@@ -26,8 +28,11 @@ public class MinecraftMod extends ModBase {
 		 add(event, new TestBlok());
 		 add(event, new SneeuwBalItem());
 		 add(event, new CreepyEiItem());
+		 addEvent(new ErnstigeErts());
+		 addEvent(new SkeletGetThisPartyStarted());
 	}
 
+	
 
 	
 

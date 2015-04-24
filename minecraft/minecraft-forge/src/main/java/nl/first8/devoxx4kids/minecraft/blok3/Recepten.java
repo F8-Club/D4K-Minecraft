@@ -29,6 +29,7 @@ public class Recepten  {
 		
 		ItemStack diamanten = new ItemStack(Items.diamond, 5);
 		ItemStack appel = new ItemStack(Items.golden_apple, 1);
+		
 		Object[] receptKlein = 
 			   {"AA",
 		    	"AA",

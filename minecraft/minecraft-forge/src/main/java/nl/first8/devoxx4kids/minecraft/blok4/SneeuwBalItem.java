@@ -19,13 +19,9 @@ public class SneeuwBalItem extends Item implements NamedModel {
 
 	public SneeuwBalItem() {
 		setCreativeTab(CreativeTabs.tabMisc);
-		register();
+//		register();
 	}
 
-	/**
-	 * Called whenever this item is equipped and the right mouse button is
-	 * pressed. Args: itemStack, world, entityPlayer
-	 */
 	public ItemStack onItemRightClick(ItemStack itemStackIn, World worldIn,
 			EntityPlayer playerIn) {
 

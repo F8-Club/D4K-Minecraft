@@ -20,13 +20,9 @@ public class CreepyEiItem extends Item implements NamedModel {
 
 	public CreepyEiItem() {
 		setCreativeTab(CreativeTabs.tabMisc);
-		register();
+		// register();
 	}
 
-	/**
-	 * Called whenever this item is equipped and the right mouse button is
-	 * pressed. Args: itemStack, world, entityPlayer
-	 */
 	public ItemStack onItemRightClick(ItemStack itemStackIn, World worldIn,
 			EntityPlayer playerIn) {
 
