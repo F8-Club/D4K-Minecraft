@@ -26,11 +26,12 @@ public class ErnstigeErts {
 	@SubscribeEvent
 	public void explode(BreakEvent event) {
 		
-		if (event.state.getBlock() != Blocks.jukebox) {
-			return;
+		if (event.state.getBlock() == Blocks.redstone_ore) {
+			
+			maakExplosie(event, 5, true);
+			
 		}
 		
-		maakExplosie(event, 5, true);
 		
 		
 	}

@@ -19,24 +19,31 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 public class BoemTNTEntity extends EntityTNTPrimed
 {
 
-	public BoemTNTEntity(World worldIn, double x, double y, double z, EntityLivingBase igniter) {
-		super(worldIn, x, y, z, igniter);
-	}
-
-	
 	
 	private void explode()
     {
         float explosie = 4.0F; //Pas deze waarde aan.. als je durft!
-        this.worldObj.createExplosion(this, this.posX, this.posY + (double)(this.height / 2.0F), this.posZ, explosie, true);
+        maakExplosie(explosie);
     }
+
+
+	private void maakExplosie(float explosie) {
+		this.worldObj.createExplosion(this, this.posX, this.posY + (double)(this.height / 2.0F), this.posZ, explosie, true);
+	}
 	
 	
 	
 	
-	/**
-     * Called to update the entity's position/logic.
-     */
+	
+	
+	
+	
+	
+	
+	public BoemTNTEntity(World worldIn, double x, double y, double z, EntityLivingBase igniter) {
+		super(worldIn, x, y, z, igniter);
+	}
+
     public void onUpdate()
     {
         this.prevPosX = this.posX;

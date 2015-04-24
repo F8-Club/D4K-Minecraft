@@ -20,7 +20,7 @@ public class CreepyEiItem extends Item implements NamedModel {
 
 	public CreepyEiItem() {
 		setCreativeTab(CreativeTabs.tabMisc);
-		// register();
+		 activeer();
 	}
 
 	public ItemStack onItemRightClick(ItemStack itemStackIn, World worldIn,
@@ -30,7 +30,7 @@ public class CreepyEiItem extends Item implements NamedModel {
 		return itemStackIn;
 	}
 
-	private void register() {
+	private void activeer() {
 		setUnlocalizedName(name);
 		GameRegistry.registerItem(this, name);
 	}

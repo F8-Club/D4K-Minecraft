@@ -15,23 +15,25 @@ import net.minecraft.world.World;
 
 public class CreepyEiEntity extends EntityThrowable {
 
+	private int explosieKracht = 2;
+	private boolean explosieBreekBlokken = true;
+
 	protected void onImpact(MovingObjectPosition positie) {
 
 		maakExplosie(positie);
 		maakCreepy(positie);
 		verwijderSneeuwbal();
-		
+
 	}
-	
+
 	private void maakExplosie(MovingObjectPosition positie) {
-		int explosieKracht = 2;
-		boolean breekBlokken = false;
-
-		BlockPos blockPos = positie.getBlockPos();
-		worldObj.createExplosion(this, d(blockPos.getX()), d(blockPos.getY()),
-				d(blockPos.getZ()), explosieKracht, breekBlokken);
+		if (!this.worldObj.isRemote && positie.entityHit == null) {
+			BlockPos blockPos = positie.getBlockPos();
+			worldObj.createExplosion(this, d(blockPos.getX()),
+					d(blockPos.getY()), d(blockPos.getZ()), explosieKracht,
+					explosieBreekBlokken);
+		}
 	}
-
 
 	private void maakCreepy(final MovingObjectPosition positie) {
 		if (!this.worldObj.isRemote && positie.entityHit == null) {
@@ -45,8 +47,6 @@ public class CreepyEiEntity extends EntityThrowable {
 		}
 
 	}
-
-	
 
 	public CreepyEiEntity(World worldIn) {
 		super(worldIn);
@@ -64,10 +64,10 @@ public class CreepyEiEntity extends EntityThrowable {
 	private double d(int x) {
 		return new Integer(x).doubleValue();
 	}
-	
+
 	private void verwijderSneeuwbal() {
 		this.setDead();
-		
+
 	}
 
 }

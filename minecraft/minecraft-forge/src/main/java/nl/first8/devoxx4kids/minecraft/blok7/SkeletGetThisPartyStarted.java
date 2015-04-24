@@ -3,6 +3,7 @@ package nl.first8.devoxx4kids.minecraft.blok7;
 import net.minecraft.block.properties.IProperty;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.monster.EntityCreeper;
 import net.minecraft.entity.monster.EntitySkeleton;
 import net.minecraft.entity.passive.EntityRabbit;
@@ -32,36 +33,42 @@ public class SkeletGetThisPartyStarted {
 	@SubscribeEvent
 	public void maakCreeper(EntityJoinWorldEvent event) {
 
-		if (!(event.entity instanceof EntitySkeleton)) {
-			return;
+		if (event.entity instanceof EntitySkeleton) {
+			
+			geefItems(event.entity);
+			
 		}
 
-		// geefItems(event.entity);
 
 	}
 
 	@SubscribeEvent
 	public void daarIsDeVersteking(LivingDeathEvent event) {
 
-		if (!(event.entity instanceof EntitySkeleton)) {
-			return;
+		if (event.entity instanceof EntitySkeleton) {
+			
+			maakNieuweCreepers(event, 3);
+			
 		}
 
-		// maakNieuweCreepers(event, 3);
 
 	}
 
 	private void geefItems(Entity entity) {
 		EntitySkeleton skelly = (EntitySkeleton) entity;
 
+		
 		skelly.setCurrentItemOrArmor(0, new ItemStack(Items.golden_axe));
 		skelly.setCurrentItemOrArmor(1, new ItemStack(Items.golden_helmet));
 		skelly.setCurrentItemOrArmor(2, new ItemStack(Items.golden_chestplate));
 		skelly.setCurrentItemOrArmor(3, new ItemStack(Items.golden_leggings));
 		skelly.setCurrentItemOrArmor(4, new ItemStack(Items.golden_boots));
+		
+		geefLeven(skelly, 30);
 
 	}
 
+	
 	private void maakNieuweCreepers(EntityEvent event, int hoeveel) {
 		if (!event.entity.worldObj.isRemote) {
 			for (int i = 0; i < hoeveel; i++) {
@@ -78,6 +85,11 @@ public class SkeletGetThisPartyStarted {
 		entity.worldObj.spawnEntityInWorld(creepy);
 		return creepy;
 	}
+	
+	private void geefLeven(EntitySkeleton skelly, double leven) {
+		skelly.getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(leven);
+	}
+
 
 	private double d(int x) {
 		return new Integer(x).doubleValue();

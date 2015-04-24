@@ -12,6 +12,7 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityTNTPrimed;
 import net.minecraft.entity.passive.EntityCow;
+import net.minecraft.entity.passive.EntitySheep;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
@@ -31,32 +32,39 @@ import net.minecraftforge.fml.common.registry.EntityRegistry;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import nl.first8.devoxx4kids.minecraft.other.NamedModel;
 
-public class TestBlok extends Block implements NamedModel {
+public class BlaBlok extends Block implements NamedModel {
 
-	private final String name = "testBlok";
+	private String name = "blaBlok"; //Hier niet aan zitten
+	
+	private float licht = 1.0F;
+	private Item blokResultaatVoorwerp = Items.diamond;
+	private int blokResultaatAantal = 1; 
+	private String blokKlikTekst = "Hallo daar!";
+	private String blokKapotGeluid = "mob.sheep.say";
+	private int blokKapotSchapenAantal = 0;
+	
 
-	public TestBlok() {
+	public BlaBlok() {
 		super(Material.rock);
-		setCreativeTab(CreativeTabs.tabBlock);
-		setLightLevel(1.0F); // Blok geeft licht!
-		register();
+		setCreativeTab(CreativeTabs.tabBlock); //Waar is dit blok te vinden in creative mode
+		setLightLevel(licht); // Blok geeft licht!
+		activeer(); // Zet dit aan om het blok te gebruiken!
 
 	}
 
-	@Override
 	public Item getItemDropped(IBlockState state, Random rand, int fortune) {
-		return Items.diamond; // Wat laat het blok vallen?
+		return blokResultaatVoorwerp; // Wat laat het blok vallen?
 	}
 
 	public int quantityDropped(Random random) {
-		return 1; // Hoeveel laat het blok vallen?
+		return blokResultaatAantal; // Hoeveel laat het blok vallen?
 	}
 
 	public boolean onBlockActivated(World world, BlockPos pos,
 			IBlockState state, EntityPlayer player, EnumFacing side,
 			float hitX, float hitY, float hitZ) {
 
-		String text = "Hallo daar!";
+		String text = blokKlikTekst;
 		zegOpChat(player, text);
 
 		return super.onBlockActivated(world, pos, state, player, side, hitX,
@@ -66,14 +74,14 @@ public class TestBlok extends Block implements NamedModel {
 	public void onBlockDestroyedByPlayer(World world, BlockPos pos,
 			IBlockState state) {
 		super.onBlockDestroyedByPlayer(world, pos, state);
-		// speelGeluid(world, pos, "mob.cow.hurt");
-		// maakKoeien(world, pos, 1);
-
+		 speelGeluid(world, pos, blokKapotGeluid);
+		 maakSchapen(world, pos, blokKapotSchapenAantal);
 	}
 
 	private void zegOpChat(EntityPlayer player, String text) {
 		String bericht = String.format(text, player.getName());
-		ChatComponentText message = new ChatComponentText(EnumChatFormatting.BLUE + bericht);
+		ChatComponentText message = new ChatComponentText(
+				EnumChatFormatting.BLUE + bericht);
 		player.addChatMessage(message);
 
 	}
@@ -83,16 +91,16 @@ public class TestBlok extends Block implements NamedModel {
 				1.0f, 1.0f, false);
 	}
 
-	private void maakKoeien(World world, BlockPos pos, int hoeveel) {
+	private void maakSchapen(World world, BlockPos pos, int hoeveel) {
 		if (!world.isRemote) {
 			Random random = new Random();
 			for (int i = 0; i < hoeveel; i++) {
-				EntityCow cow = new EntityCow(world);
+				EntitySheep schaap = new EntitySheep(world);
 				int x = pos.getX() - 2 + random.nextInt(4);
 				int y = pos.getY() + random.nextInt(4);
 				int z = pos.getZ() - 2 + random.nextInt(4);
-				cow.setPosition(x, y, z);
-				world.spawnEntityInWorld(cow);
+				schaap.setPosition(x, y, z);
+				world.spawnEntityInWorld(schaap);
 			}
 		}
 	}
@@ -105,7 +113,7 @@ public class TestBlok extends Block implements NamedModel {
 		return null;
 	}
 
-	private void register() {
+	private void activeer() {
 		setUnlocalizedName(name);
 		GameRegistry.registerBlock(this, name);
 	}

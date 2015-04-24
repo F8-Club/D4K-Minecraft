@@ -2,6 +2,7 @@ package nl.first8.devoxx4kids.minecraft.blok4;
 
 import net.minecraft.block.properties.IProperty;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.passive.EntityRabbit;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.projectile.EntityArrow;
@@ -19,31 +20,52 @@ public class SneeuwBalItem extends Item implements NamedModel {
 
 	public SneeuwBalItem() {
 		setCreativeTab(CreativeTabs.tabMisc);
-//		register();
+		// activeer();
 	}
 
-	public ItemStack onItemRightClick(ItemStack itemStackIn, World worldIn,
-			EntityPlayer playerIn) {
+	public ItemStack onItemRightClick(ItemStack itemStackIn, World wereld,
+			EntityPlayer speler) {
 
-		// worldIn.playSoundAtEntity(playerIn, "random.bow", 0.5F, 1.0F);
-		// worldIn.spawnEntityInWorld(new EntityArrow(worldIn, playerIn, 1.0F));
-		// worldIn.spawnEntityInWorld(maakKonijn(worldIn, playerIn));
-		// playerIn.moveForward = 2.0F;
-		// playerIn.inventory.addItemStackToInventory(new ItemStack(Items.egg, 1));
+		speelGeluid(speler, "random.bow");
+
+		schietPijl(speler, 5);
+
+		maakLiefKonijn(speler);
+
+		geefVoorwerp(speler, Items.egg, 1);
 
 		return itemStackIn;
 	}
 
-	private EntityRabbit maakKonijn(World worldIn, EntityPlayer playerIn) {
-		EntityRabbit konijn = new EntityRabbit(worldIn);
-		konijn.setPosition(playerIn.getPosition().getX(), playerIn
-				.getPosition().getY(), playerIn.getPosition().getZ());
-		konijn.setInLove(playerIn);
-		konijn.setAttackTarget(playerIn);
+	private void schietPijl(EntityPlayer player, int kracht) {
+		EntityArrow pijl = new EntityArrow(player.worldObj, player, 1.0F);
+		pijl.setKnockbackStrength(kracht);
+		maakInWereld(player.worldObj, pijl);
+	}
+
+	private EntityRabbit maakLiefKonijn(EntityPlayer speler) {
+		EntityRabbit konijn = new EntityRabbit(speler.worldObj);
+		konijn.setPosition(speler.getPosition().getX(), speler.getPosition()
+				.getY(), speler.getPosition().getZ());
+		konijn.setInLove(speler);
+		maakInWereld(speler.worldObj, konijn);
 		return konijn;
 	}
 
-	private void register() {
+	private void geefVoorwerp(EntityPlayer speler, Item item, int aantal) {
+		speler.inventory.addItemStackToInventory(new ItemStack(item, aantal));
+
+	}
+
+	private void speelGeluid(EntityPlayer player, String geluid) {
+		player.worldObj.playSoundAtEntity(player, geluid, 0.5F, 1.0F);
+	}
+
+	private void maakInWereld(World world, Entity entity) {
+		world.spawnEntityInWorld(entity);
+	}
+
+	private void activeer() {
 		setUnlocalizedName(name);
 		GameRegistry.registerItem(this, name);
 	}

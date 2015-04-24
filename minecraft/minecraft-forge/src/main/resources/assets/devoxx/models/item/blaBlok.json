@@ -1,5 +1,5 @@
 {
-	"parent": "devoxx:block/testBlok",
+	"parent": "devoxx:block/blaBlok",
 	"display": {
         "thirdperson": {
             "rotation": [ 10, -45, 170 ],

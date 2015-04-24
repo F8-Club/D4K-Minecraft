@@ -32,8 +32,8 @@ public class BoemBlok extends BlockTNT implements NamedModel
 
 	public BoemBlok() {
 		super();
-		//setCreativeTab(CreativeTabs.tabBlock);
-		//register();
+		setCreativeTab(CreativeTabs.tabBlock);
+		register();
 	}
 
 	@Override

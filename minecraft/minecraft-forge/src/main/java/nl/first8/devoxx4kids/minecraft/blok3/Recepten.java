@@ -27,14 +27,12 @@ public class Recepten  {
 
 	public static void maakRecepten() {
 		
-		ItemStack diamanten = new ItemStack(Items.diamond, 5);
-		ItemStack appel = new ItemStack(Items.golden_apple, 1);
-		
 		Object[] receptKlein = 
-			   {"AA",
-		    	"AA",
-		    	'A', Blocks.dirt
-			   };
+			{"AA",
+			 "AA",
+			 'A', Blocks.dirt
+			};
+		
 		Object[] receptGroot = 
 			{"AAA",
 			 "ABA",
@@ -43,8 +41,13 @@ public class Recepten  {
 			 'B', Items.apple
 			};
 		
-		// GameRegistry.addRecipe(diamanten, receptKlein);
+		voegToeRecept(Items.diamond, 1, receptKlein);
 		
 	}
+
+	private static void voegToeRecept(Item voorwerp, int aantal, Object[] recept) {
+		GameRegistry.addRecipe(new ItemStack(voorwerp, aantal), recept);
+	}
+
 
 }
