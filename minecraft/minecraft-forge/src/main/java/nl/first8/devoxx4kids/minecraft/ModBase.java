@@ -14,6 +14,7 @@ import net.minecraft.client.resources.model.ModelResourceLocation;
 import net.minecraft.item.Item;
 import net.minecraft.util.RegistryNamespacedDefaultedByKey;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.fml.common.FMLCommonHandler;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLStateEvent;
 import net.minecraftforge.fml.relauncher.Side;
@@ -36,6 +37,7 @@ public class ModBase {
 	
 	protected void addEvent(Object eventObject) {
 		MinecraftForge.EVENT_BUS.register(eventObject);
+		FMLCommonHandler.instance().bus().register(eventObject);
 	}
 
 

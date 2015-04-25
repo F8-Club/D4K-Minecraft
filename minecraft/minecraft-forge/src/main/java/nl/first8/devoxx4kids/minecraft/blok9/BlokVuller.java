@@ -1,4 +1,4 @@
-package nl.first8.devoxx4kids.minecraft.blok8;
+package nl.first8.devoxx4kids.minecraft.blok9;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.properties.IProperty;

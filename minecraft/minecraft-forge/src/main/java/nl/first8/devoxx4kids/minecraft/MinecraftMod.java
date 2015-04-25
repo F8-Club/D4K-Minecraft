@@ -1,5 +1,9 @@
 package nl.first8.devoxx4kids.minecraft;
 
+import org.lwjgl.input.Keyboard;
+
+import net.minecraft.client.settings.KeyBinding;
+import net.minecraftforge.fml.client.registry.ClientRegistry;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
@@ -11,7 +15,8 @@ import nl.first8.devoxx4kids.minecraft.blok4.SneeuwBalItem;
 import nl.first8.devoxx4kids.minecraft.blok5.CreepyEiItem;
 import nl.first8.devoxx4kids.minecraft.blok6.ErnstigeErts;
 import nl.first8.devoxx4kids.minecraft.blok7.SkeletGetThisPartyStarted;
-import nl.first8.devoxx4kids.minecraft.blok8.BlokVuller;
+import nl.first8.devoxx4kids.minecraft.blok8.SpeelSpelerSpeelst;
+import nl.first8.devoxx4kids.minecraft.blok9.BlokVuller;
 
 @Mod(modid = MinecraftMod.MODID, version = MinecraftMod.VERSION)
 public class MinecraftMod extends ModBase {
@@ -32,6 +37,9 @@ public class MinecraftMod extends ModBase {
 		 addEvent(new ErnstigeErts());
 		 addEvent(new SkeletGetThisPartyStarted());
 		 addEvent(new BlokVuller());
+		 addEvent(new SpeelSpelerSpeelst());
+		 
+		 ClientRegistry.registerKeyBinding(new KeyBinding("Varken", Keyboard.KEY_V, "key.categories.gameplay"));
 	}
 
 	

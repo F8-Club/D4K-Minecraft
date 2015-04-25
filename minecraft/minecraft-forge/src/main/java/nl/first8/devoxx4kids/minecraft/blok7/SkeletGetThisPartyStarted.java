@@ -3,6 +3,8 @@ package nl.first8.devoxx4kids.minecraft.blok7;
 import net.minecraft.block.properties.IProperty;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityCreature;
+import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.monster.EntityCreeper;
 import net.minecraft.entity.monster.EntitySkeleton;
@@ -34,8 +36,11 @@ public class SkeletGetThisPartyStarted {
 	public void maakCreeper(EntityJoinWorldEvent event) {
 
 		if (event.entity instanceof EntitySkeleton) {
+			EntitySkeleton skelly = (EntitySkeleton) event.entity;
 			
-			geefItems(event.entity);
+			// geefMooieKleding(skelly);
+						
+			// geefLeven(skelly, 30);
 			
 		}
 
@@ -46,17 +51,17 @@ public class SkeletGetThisPartyStarted {
 	public void daarIsDeVersteking(LivingDeathEvent event) {
 
 		if (event.entity instanceof EntitySkeleton) {
+			EntitySkeleton skelly = (EntitySkeleton) event.entity;
 			
-			maakNieuweCreepers(event, 3);
+			// laatVoorwerpVallen(skelly, Items.gold_ingot, 1);
 			
+			// maakNieuweCreepers(event, 3);
 		}
 
 
 	}
 
-	private void geefItems(Entity entity) {
-		EntitySkeleton skelly = (EntitySkeleton) entity;
-
+	private void geefMooieKleding(EntityCreature skelly) {
 		
 		skelly.setCurrentItemOrArmor(0, new ItemStack(Items.golden_axe));
 		skelly.setCurrentItemOrArmor(1, new ItemStack(Items.golden_helmet));
@@ -64,9 +69,14 @@ public class SkeletGetThisPartyStarted {
 		skelly.setCurrentItemOrArmor(3, new ItemStack(Items.golden_leggings));
 		skelly.setCurrentItemOrArmor(4, new ItemStack(Items.golden_boots));
 		
-		geefLeven(skelly, 30);
 
 	}
+	
+	private void laatVoorwerpVallen(Entity entity, Item voorwerp, int aantal) {
+		entity.dropItem(voorwerp, aantal);
+		
+	}
+
 
 	
 	private void maakNieuweCreepers(EntityEvent event, int hoeveel) {
@@ -86,8 +96,8 @@ public class SkeletGetThisPartyStarted {
 		return creepy;
 	}
 	
-	private void geefLeven(EntitySkeleton skelly, double leven) {
-		skelly.getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(leven);
+	private void geefLeven(EntityLiving beestje, double leven) {
+		beestje.getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(leven);
 	}
 
 
