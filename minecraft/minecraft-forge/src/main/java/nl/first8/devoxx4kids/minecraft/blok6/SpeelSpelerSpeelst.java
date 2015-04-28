@@ -1,4 +1,4 @@
-package nl.first8.devoxx4kids.minecraft.blok8;
+package nl.first8.devoxx4kids.minecraft.blok6;
 
 import java.util.Date;
 

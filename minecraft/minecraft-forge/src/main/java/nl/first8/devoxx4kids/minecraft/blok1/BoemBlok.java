@@ -24,12 +24,16 @@ import net.minecraftforge.fml.common.registry.EntityRegistry;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import nl.first8.devoxx4kids.minecraft.other.NamedModel;
 
+/**
+ * DEZE HOEF JE NIET TE WIJZIGEN.
+ * Dit is een nieuw blok, waarmee we onze nieuwe explosie kunnen gebruiken.
+ * Onze nieuwe explosie zit in BoemExplosie, dit is wat je moet openen.
+ */
 public class BoemBlok extends BlockTNT implements NamedModel
 {
 
 	private final String name = "boemBlok";
 	
-
 	public BoemBlok() {
 		super();
 		setCreativeTab(CreativeTabs.tabBlock);
@@ -43,7 +47,7 @@ public class BoemBlok extends BlockTNT implements NamedModel
 	        {
 	            if (((Boolean)state.getValue(EXPLODE)).booleanValue())
 	            {
-	            	EntityTNTPrimed entitytntprimed = new BoemTNTEntity(worldIn, (double)((float)pos.getX() + 0.5F), (double)((float)pos.getY() + 0.5F), (double)((float)pos.getZ() + 0.5F), igniter);
+	            	EntityTNTPrimed entitytntprimed = new BoemExplosie(worldIn, (double)((float)pos.getX() + 0.5F), (double)((float)pos.getY() + 0.5F), (double)((float)pos.getZ() + 0.5F), igniter);
 	                worldIn.spawnEntityInWorld(entitytntprimed);
 	                worldIn.playSoundAtEntity(entitytntprimed, "game.tnt.primed", 1.0F, 1.0F);
 	            }

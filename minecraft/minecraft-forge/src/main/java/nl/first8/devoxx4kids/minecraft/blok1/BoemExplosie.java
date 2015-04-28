@@ -16,31 +16,25 @@ import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.registry.EntityRegistry;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
-public class BoemTNTEntity extends EntityTNTPrimed
+public class BoemExplosie extends EntityTNTPrimed
 {
 
 	
 	private void explode()
     {
-        float explosie = 4.0F; //Pas deze waarde aan.. als je durft!
-        maakExplosie(explosie);
+        float explosieGrootte = 4.0F; //Pas deze waarde aan.. als je durft!
+        maakExplosie(explosieGrootte);
     }
 
-
+	
+	
 	private void maakExplosie(float explosie) {
 		this.worldObj.createExplosion(this, this.posX, this.posY + (double)(this.height / 2.0F), this.posZ, explosie, true);
 	}
 	
 	
 	
-	
-	
-	
-	
-	
-	
-	
-	public BoemTNTEntity(World worldIn, double x, double y, double z, EntityLivingBase igniter) {
+	public BoemExplosie(World worldIn, double x, double y, double z, EntityLivingBase igniter) {
 		super(worldIn, x, y, z, igniter);
 	}
 

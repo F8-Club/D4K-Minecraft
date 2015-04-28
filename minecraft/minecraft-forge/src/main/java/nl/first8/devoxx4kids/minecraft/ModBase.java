@@ -18,7 +18,7 @@ import net.minecraftforge.fml.common.FMLCommonHandler;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLStateEvent;
 import net.minecraftforge.fml.relauncher.Side;
-import nl.first8.devoxx4kids.minecraft.blok6.ErnstigeErts;
+import nl.first8.devoxx4kids.minecraft.blok5.ErnstigeErts;
 import nl.first8.devoxx4kids.minecraft.other.NamedModel;
 
 public class ModBase {

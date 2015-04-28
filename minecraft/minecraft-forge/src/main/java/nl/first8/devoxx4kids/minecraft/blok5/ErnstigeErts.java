@@ -1,4 +1,4 @@
-package nl.first8.devoxx4kids.minecraft.blok6;
+package nl.first8.devoxx4kids.minecraft.blok5;
 
 import net.minecraft.block.properties.IProperty;
 import net.minecraft.creativetab.CreativeTabs;
@@ -28,7 +28,7 @@ public class ErnstigeErts {
 		
 		if (event.state.getBlock() == Blocks.redstone_ore) {
 			
-			maakExplosie(event, 5, true);
+			// maakExplosie(event, 5, true);
 			
 		}
 		

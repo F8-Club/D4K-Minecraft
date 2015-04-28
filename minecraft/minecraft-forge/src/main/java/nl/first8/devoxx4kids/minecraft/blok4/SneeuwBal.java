@@ -15,10 +15,10 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import nl.first8.devoxx4kids.minecraft.other.NamedModel;
 
-public class SneeuwBalItem extends Item implements NamedModel {
+public class SneeuwBal extends Item implements NamedModel {
 	private final String name = "sneeuwBal";
 
-	public SneeuwBalItem() {
+	public SneeuwBal() {
 		setCreativeTab(CreativeTabs.tabMisc);
 		// activeer();
 	}

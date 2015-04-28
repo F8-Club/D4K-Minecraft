@@ -1,4 +1,4 @@
-package nl.first8.devoxx4kids.minecraft.blok5;
+package nl.first8.devoxx4kids.minecraft.blok8;
 
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;

@@ -48,7 +48,7 @@ public class BlaBlok extends Block implements NamedModel {
 		super(Material.rock);
 		setCreativeTab(CreativeTabs.tabBlock); //Waar is dit blok te vinden in creative mode
 		setLightLevel(licht); // Blok geeft licht!
-		activeer(); // Zet dit aan om het blok te gebruiken!
+		// activeer(); // Zet dit aan om het blok te gebruiken!
 
 	}
 
