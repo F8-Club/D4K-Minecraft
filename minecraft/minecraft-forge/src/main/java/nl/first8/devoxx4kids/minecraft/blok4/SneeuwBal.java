@@ -48,6 +48,7 @@ public class SneeuwBal extends Item implements NamedModel {
 		konijn.setPosition(speler.getPosition().getX(), speler.getPosition()
 				.getY(), speler.getPosition().getZ());
 		konijn.setInLove(speler);
+		// konijn.setFire(5);
 		maakInWereld(speler.worldObj, konijn);
 		return konijn;
 	}
