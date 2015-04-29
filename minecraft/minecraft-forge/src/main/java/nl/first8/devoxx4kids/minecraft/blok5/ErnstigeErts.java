@@ -28,11 +28,9 @@ public class ErnstigeErts {
 		
 		if (event.state.getBlock() == Blocks.redstone_ore) { // Als het blok rode erts is...
 			
-			// maakExplosie(event, 5, false);  //Maak een explosie met een kracht! 
+			 // maakExplosie(event, 10, true);  //Maak een explosie met een kracht! 
 			
 		}
-		
-		
 		
 	}
 	
