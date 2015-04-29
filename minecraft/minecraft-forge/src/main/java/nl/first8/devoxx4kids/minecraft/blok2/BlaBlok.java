@@ -36,7 +36,7 @@ public class BlaBlok extends Block implements NamedModel {
 
 	private String name = "blaBlok"; //Hier niet aan zitten
 	
-	private float licht = 0.0F; //Hoeveel licht geeft het blok
+	private float licht = 1.0F; //Hoeveel licht geeft het blok
 	private Item blokResultaatVoorwerp = Items.diamond; // Wat laat het blok vallen
 	private int blokResultaatAantal = 1;  // Hoeveel laat het blok vallen
 	private String blokKlikTekst = "Blaaahh!"; // Wat chat het blok?
@@ -67,6 +67,7 @@ public class BlaBlok extends Block implements NamedModel {
 			float hitX, float hitY, float hitZ) {
 
 		String text = blokKlikTekst;
+		// text = blokKlikTekst + player.getName(); // Je kan ook de spelernaam toevoegen
 		zegOpChat(player, text);
 
 		return super.onBlockActivated(world, pos, state, player, side, hitX,
