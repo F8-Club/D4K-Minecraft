@@ -13,16 +13,16 @@ import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.World;
 
-public class CreepyEiEntity extends EntityThrowable {
+public class VliegendCreepyEi extends EntityThrowable {
 
-	private int explosieKracht = 2;
-	private boolean explosieBreekBlokken = true;
+	private int explosieKracht = 2; // Kracht van de explosie
+	private boolean explosieBreekBlokken = true; // Breekt het ei ook blokken
 
 	protected void onImpact(MovingObjectPosition positie) {
 
-		maakExplosie(positie);
-		maakCreepy(positie);
-		verwijderSneeuwbal();
+		maakExplosie(positie); // Maak een explosie
+		maakCreepy(positie); // Maak een nieuwe creeper
+		verwijderSneeuwbal(); // Verwijder de sneeuwbal
 
 	}
 
@@ -48,15 +48,15 @@ public class CreepyEiEntity extends EntityThrowable {
 
 	}
 
-	public CreepyEiEntity(World worldIn) {
+	public VliegendCreepyEi(World worldIn) {
 		super(worldIn);
 	}
 
-	public CreepyEiEntity(World worldIn, EntityLivingBase p_i1780_2_) {
+	public VliegendCreepyEi(World worldIn, EntityLivingBase p_i1780_2_) {
 		super(worldIn, p_i1780_2_);
 	}
 
-	public CreepyEiEntity(World worldIn, double p_i1781_2_, double p_i1781_4_,
+	public VliegendCreepyEi(World worldIn, double p_i1781_2_, double p_i1781_4_,
 			double p_i1781_6_) {
 		super(worldIn, p_i1781_2_, p_i1781_4_, p_i1781_6_);
 	}

@@ -20,19 +20,19 @@ public class SneeuwBal extends Item implements NamedModel {
 
 	public SneeuwBal() {
 		setCreativeTab(CreativeTabs.tabMisc);
-		// activeer();
+		// activeer();  // Zet dit aan om de sneeuwbal te kunnen gebruiken!
 	}
 
 	public ItemStack onItemRightClick(ItemStack itemStackIn, World wereld,
 			EntityPlayer speler) {
 
-		speelGeluid(speler, "random.bow");
+		speelGeluid(speler, "random.bow");  // Maakt geluid
 
-		schietPijl(speler, 5);
+		schietPijl(speler, 5);  // Schiet een pijl met een bepaalde kracht
 
-		maakLiefKonijn(speler);
+		maakLiefKonijn(speler); // Maak ook maar een lief konijn
 
-		geefVoorwerp(speler, Items.egg, 1);
+		geefVoorwerp(speler, Items.egg, 1); // Geef de speler ook maar wat voorwerpen
 
 		return itemStackIn;
 	}

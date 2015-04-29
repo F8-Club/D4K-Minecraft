@@ -38,9 +38,9 @@ public class SkeletGetThisPartyStarted {
 		if (event.entity instanceof EntitySkeleton) {
 			EntitySkeleton skelly = (EntitySkeleton) event.entity;
 			
-			// geefMooieKleding(skelly);
+			// geefMooieKleding(skelly); // Geef dat skelet wat mooie spullen
 						
-			// geefLeven(skelly, 30);
+			// geefLeven(skelly, 30); // Geef het skelet extra leven
 			
 		}
 
@@ -53,9 +53,9 @@ public class SkeletGetThisPartyStarted {
 		if (event.entity instanceof EntitySkeleton) {
 			EntitySkeleton skelly = (EntitySkeleton) event.entity;
 			
-			// laatVoorwerpVallen(skelly, Items.gold_ingot, 1);
+			// laatVoorwerpVallen(skelly, Items.gold_ingot, 1); // Laat goud vallen 
 			
-			// maakNieuweCreepers(event, 3);
+			// maakNieuweCreepers(event, 3); // Maak enkele creepers!
 		}
 
 

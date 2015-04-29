@@ -41,9 +41,12 @@ public class Recepten  {
 			 'B', Items.apple
 			};
 		
-		voegToeRecept(Items.diamond, 1, receptKlein);
+		// voegToeRecept(Items.diamond, 1, receptKlein);
 		
 	}
+	
+	
+	
 
 	private static void voegToeRecept(Item voorwerp, int aantal, Object[] recept) {
 		GameRegistry.addRecipe(new ItemStack(voorwerp, aantal), recept);

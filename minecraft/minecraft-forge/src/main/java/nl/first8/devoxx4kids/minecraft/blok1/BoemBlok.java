@@ -37,7 +37,7 @@ public class BoemBlok extends BlockTNT implements NamedModel
 	public BoemBlok() {
 		super();
 		setCreativeTab(CreativeTabs.tabBlock);
-		register();
+		activeer();
 	}
 
 	@Override
@@ -64,7 +64,7 @@ public class BoemBlok extends BlockTNT implements NamedModel
 		return BlockTNT.EXPLODE;
 	}
 	
-	private void register() {
+	private void activeer() {
 		setUnlocalizedName(name);
 		GameRegistry.registerBlock(this, name);
 	}

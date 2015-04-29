@@ -10,6 +10,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.settings.KeyBinding;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.effect.EntityLightningBolt;
 import net.minecraft.entity.monster.EntityCreeper;
@@ -56,89 +57,84 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import nl.first8.devoxx4kids.minecraft.other.NamedModel;
 
 public class SpeelSpelerSpeelst {
-	
+
 	private KeyBinding varkenKey;
 	boolean geefGedonder = false;
 	private Date laatsteBliksem = new Date();
 
-
 	@SubscribeEvent
 	public void spring(LivingJumpEvent event) {
-		int springHoger = 1; //Verander dit naar 3 om hoger te springen
+		int springHoger = 1; // Verander dit naar 3 om hoger te springen!
 		event.entity.motionY *= springHoger;
 
 	}
-	
+
 	@SubscribeEvent
 	public void vecht(AttackEntityEvent event) {
 		Entity slachtoffer = event.target;
 		EntityPlayer speler = event.entityPlayer;
 
 		float schade = 50F;
-		
-		// slachtoffer.attackEntityFrom(DamageSource.causePlayerDamage(speler), schade);
-		// speler.heal(schade);
-		
-		
+
+		vampierAanval(speler, slachtoffer, schade); // Doe extra schade, en
+													// heal!
+
 	}
 
 	@SubscribeEvent
 	public void val(LivingFallEvent event) {
-		
-		// event.damageMultiplier = 0;
-		
+
+		// event.damageMultiplier = 0; // Maak vallen schadeloos
+
 	}
-	
+
 	@SubscribeEvent
 	public void smid(ItemCraftedEvent event) {
-		
-		// event.crafting.stackSize *= 2;
-		
-		
+
+		// event.crafting.stackSize *= 2; // Tweede voorwerp voor de prijs van 1
+
 	}
-	
+
 	@SubscribeEvent
 	public void lach(PlayerTickEvent event) {
 		if (varkenKey == null) {
 			varkenKey = vindVarkenKey();
-			
+
 		}
 		if (varkenKey.isKeyDown()) {
 			String geluid = "mob.pig.say";
-			
-			// speelGuid(event.player, geluid);
-			
-		}
-		
-	}
 
+			// speelGuid(event.player, geluid); // Speel een geluid
+
+		}
+
+	}
 
 	@SubscribeEvent
 	public void gedonder(LivingAttackEvent event) {
-		
-		// geefGedonder = true;
-		
-		if (geefGedonder && event.entityLiving instanceof EntityPlayer) {
-			Date nu = new Date();
-			if (nu.getTime() - laatsteBliksem.getTime() > 3000) {
-				World wereld = event.entity.worldObj;
-				Entity boosdoener = event.source.getEntity();
-				if (boosdoener != null) {
-					EntityLightningBolt bliksems = new EntityLightningBolt(wereld, boosdoener.posX, boosdoener.posY, boosdoener.posZ);
-					wereld.addWeatherEffect(bliksems);
-					laatsteBliksem = nu;
-					
-				}
-			}
-			
+
+		if (valtSpelerAan(event) && tijdVoorBliksem()) {
+			World wereld = event.entity.worldObj;
+			EntityLivingBase speler = event.entityLiving;
+			Entity boosdoener = event.source.getEntity();
+
+			String geluid = "ambient.weather.thunder";
+			// speelGuid(speler, geluid); // Speel een geluid
+			// bliksem(wereld, boosdoener); // Maak bliksem op die boosdoener!
+
 		}
-		
+
 	}
-	
-	private void speelGuid(EntityPlayer speler, String geluid) {
-		speler.worldObj.playSoundAtEntity(speler, geluid, 1.0F, 1.0F);
+
+	private boolean valtSpelerAan(LivingAttackEvent event) {
+		return event.entityLiving instanceof EntityPlayer;
 	}
-	
+
+	private void speelGuid(EntityLivingBase entityLiving, String geluid) {
+		entityLiving.worldObj.playSoundAtEntity(entityLiving, geluid, 1.0F,
+				1.0F);
+	}
+
 	private KeyBinding vindVarkenKey() {
 		KeyBinding resultaat = null;
 		for (KeyBinding key : Minecraft.getMinecraft().gameSettings.keyBindings) {
@@ -149,7 +145,27 @@ public class SpeelSpelerSpeelst {
 		}
 		return resultaat;
 	}
-	
 
+	private void vampierAanval(Entity aanvaller, Entity slachtoffer,
+			float schade) {
+		slachtoffer.attackEntityFrom(DamageSource.generic, schade);
+		if (aanvaller instanceof EntityLivingBase) {
+			((EntityLivingBase) aanvaller).heal(schade);
+		}
+	}
+	
+	private void bliksem(World wereld, Entity boosdoener) {
+		if (boosdoener != null) {
+			EntityLightningBolt bliksems = new EntityLightningBolt(wereld,
+					boosdoener.posX, boosdoener.posY, boosdoener.posZ);
+			wereld.addWeatherEffect(bliksems);
+			laatsteBliksem = new Date();
+		}
+	}
+
+	private boolean tijdVoorBliksem() {
+		// Moet 3 seconden na laatste bliksem zijn
+		return new Date().getTime() - laatsteBliksem.getTime() > 3000;
+	}
 
 }

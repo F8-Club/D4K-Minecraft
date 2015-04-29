@@ -15,18 +15,18 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import nl.first8.devoxx4kids.minecraft.other.NamedModel;
 
-public class CreepyEiItem extends Item implements NamedModel {
+public class CreepyEiVoorwerp extends Item implements NamedModel {
 	private final String name = "creepyEi";
 
-	public CreepyEiItem() {
+	public CreepyEiVoorwerp() {
 		setCreativeTab(CreativeTabs.tabMisc);
-		 activeer();
+		// activeer(); // Zet deze aan om het creepy ei te activeren
 	}
 
 	public ItemStack onItemRightClick(ItemStack itemStackIn, World worldIn,
 			EntityPlayer playerIn) {
 
-		worldIn.spawnEntityInWorld(new CreepyEiEntity(worldIn, playerIn));
+		worldIn.spawnEntityInWorld(new VliegendCreepyEi(worldIn, playerIn));
 		return itemStackIn;
 	}
 

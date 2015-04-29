@@ -41,24 +41,25 @@ public class BlokVuller {
 
 	private IBlockState selectieBlok;
 	private BlockPos selectieBlokPos;
+	private boolean actief;
 
 	@SubscribeEvent
 	public void kiesBlok(PlayerInteractEvent event) {
+		
+		// activeer(); //Zet deze aan om de blokvuller te activeren
 
-		if (event.action != Action.RIGHT_CLICK_BLOCK
-				|| event.entityPlayer.getHeldItem() == null
-				|| event.entityPlayer.getHeldItem().getItem() != Items.diamond_shovel
-				|| !event.entityPlayer.capabilities.isCreativeMode) {
-			return;
-		}
-
-		if (selectieBlok == null) {
-			selecteerBlok(event);
-		} else {
-			vulBlokken(event);
+		Item activatieVoorwerp = Items.diamond_shovel;
+		if (isRechterMuisMetVoorwerp(event, activatieVoorwerp)) {
+			if (selectieBlok == null) {
+				selecteerBlok(event);
+			} else {
+				vulBlokken(event);
+			}
 		}
 
 	}
+
+
 
 	/**
 	 * Als er nog niets geselecteerd was, selecteer het blok
@@ -106,6 +107,11 @@ public class BlokVuller {
 		}
 
 	}
+	
+	private boolean isRechterMuisMetVoorwerp(PlayerInteractEvent event, Item activatieVoorwerp) {
+		return actief && event.action == Action.RIGHT_CLICK_BLOCK && event.entityPlayer.getHeldItem() != null
+				&& event.entityPlayer.getHeldItem().getItem() == activatieVoorwerp && event.entityPlayer.capabilities.isCreativeMode;
+	}
 
 	private void zegOpChat(EntityPlayer speler, String bericht,
 			Object... vulling) {
@@ -113,6 +119,11 @@ public class BlokVuller {
 		IChatComponent chatComponent = new ChatComponentText(
 				EnumChatFormatting.DARK_AQUA + message);
 		speler.addChatComponentMessage(chatComponent);
+	}
+	
+	private void activeer() {
+		actief = true;
+		
 	}
 
 }

@@ -26,9 +26,9 @@ public class ErnstigeErts {
 	@SubscribeEvent
 	public void explode(BreakEvent event) {
 		
-		if (event.state.getBlock() == Blocks.redstone_ore) {
+		if (event.state.getBlock() == Blocks.redstone_ore) { // Als het blok rode erts is...
 			
-			// maakExplosie(event, 5, true);
+			// maakExplosie(event, 5, false);  //Maak een explosie met een kracht! 
 			
 		}
 		

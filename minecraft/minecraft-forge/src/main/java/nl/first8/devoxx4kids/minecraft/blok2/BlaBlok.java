@@ -36,19 +36,19 @@ public class BlaBlok extends Block implements NamedModel {
 
 	private String name = "blaBlok"; //Hier niet aan zitten
 	
-	private float licht = 1.0F;
-	private Item blokResultaatVoorwerp = Items.diamond;
-	private int blokResultaatAantal = 1; 
-	private String blokKlikTekst = "Hallo daar!";
-	private String blokKapotGeluid = "mob.sheep.say";
-	private int blokKapotSchapenAantal = 0;
+	private float licht = 0.0F; //Hoeveel licht geeft het blok
+	private Item blokResultaatVoorwerp = Items.diamond; // Wat laat het blok vallen
+	private int blokResultaatAantal = 1;  // Hoeveel laat het blok vallen
+	private String blokKlikTekst = "Blaaahh!"; // Wat chat het blok?
+	private String blokKapotGeluid = "mob.sheep.say"; // Wat zegt een kapot blok?
+	private int blokKapotSchapenAantal = 0; // Hoeveel schapen maakt een kapot blok?
 	
 
 	public BlaBlok() {
 		super(Material.rock);
 		setCreativeTab(CreativeTabs.tabBlock); //Waar is dit blok te vinden in creative mode
 		setLightLevel(licht); // Blok geeft licht!
-		// activeer(); // Zet dit aan om het blok te gebruiken!
+		// activeer(); // Zet dit aan om het blok te gebruiken!  
 
 	}
 
@@ -59,6 +59,8 @@ public class BlaBlok extends Block implements NamedModel {
 	public int quantityDropped(Random random) {
 		return blokResultaatAantal; // Hoeveel laat het blok vallen?
 	}
+	
+	
 
 	public boolean onBlockActivated(World world, BlockPos pos,
 			IBlockState state, EntityPlayer player, EnumFacing side,
@@ -74,10 +76,15 @@ public class BlaBlok extends Block implements NamedModel {
 	public void onBlockDestroyedByPlayer(World world, BlockPos pos,
 			IBlockState state) {
 		super.onBlockDestroyedByPlayer(world, pos, state);
+		
 		 speelGeluid(world, pos, blokKapotGeluid);
 		 maakSchapen(world, pos, blokKapotSchapenAantal);
+		 
 	}
 
+	
+	
+	
 	private void zegOpChat(EntityPlayer player, String text) {
 		String bericht = String.format(text, player.getName());
 		ChatComponentText message = new ChatComponentText(

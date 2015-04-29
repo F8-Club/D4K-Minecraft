@@ -15,7 +15,7 @@ import nl.first8.devoxx4kids.minecraft.blok4.SneeuwBal;
 import nl.first8.devoxx4kids.minecraft.blok5.ErnstigeErts;
 import nl.first8.devoxx4kids.minecraft.blok6.SpeelSpelerSpeelst;
 import nl.first8.devoxx4kids.minecraft.blok7.SkeletGetThisPartyStarted;
-import nl.first8.devoxx4kids.minecraft.blok8.CreepyEiItem;
+import nl.first8.devoxx4kids.minecraft.blok8.CreepyEiVoorwerp;
 import nl.first8.devoxx4kids.minecraft.blok9.BlokVuller;
 
 @Mod(modid = MinecraftMod.MODID, version = MinecraftMod.VERSION)
@@ -33,7 +33,7 @@ public class MinecraftMod extends ModBase {
 		 add(event, new BoemBlok());
 		 add(event, new BlaBlok());
 		 add(event, new SneeuwBal());
-		 add(event, new CreepyEiItem());
+		 add(event, new CreepyEiVoorwerp());
 		 addEvent(new ErnstigeErts());
 		 addEvent(new SkeletGetThisPartyStarted());
 		 addEvent(new BlokVuller());
