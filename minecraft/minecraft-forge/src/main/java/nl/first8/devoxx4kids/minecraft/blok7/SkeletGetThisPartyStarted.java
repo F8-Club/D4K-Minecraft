@@ -33,7 +33,7 @@ import nl.first8.devoxx4kids.minecraft.other.NamedModel;
 public class SkeletGetThisPartyStarted {
 
 	@SubscribeEvent
-	public void maakCreeper(EntityJoinWorldEvent event) {
+	public void leveHetSkelet(EntityJoinWorldEvent event) {
 
 		if (event.entity instanceof EntitySkeleton) {
 			EntitySkeleton skelly = (EntitySkeleton) event.entity;
@@ -53,9 +53,10 @@ public class SkeletGetThisPartyStarted {
 		if (event.entity instanceof EntitySkeleton) {
 			EntitySkeleton skelly = (EntitySkeleton) event.entity;
 			
-			// laatVoorwerpVallen(skelly, Items.gold_ingot, 1); // Laat goud vallen 
-			
 			// maakNieuweCreepers(event, 3); // Maak enkele creepers!
+			
+			// laatVoorwerpVallen(skelly, Items.gold_ingot, 1); // Laat goud vallen
+			
 		}
 
 
