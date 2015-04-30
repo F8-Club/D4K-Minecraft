@@ -46,7 +46,7 @@ public class BlokVuller {
 	@SubscribeEvent
 	public void kiesBlok(PlayerInteractEvent event) {
 		
-		activeer(); //Zet deze aan om de blokvuller te activeren
+		// activeer(); //Zet deze aan om de blokvuller te activeren
 
 		Item activatieVoorwerp = Items.diamond_shovel;
 		if (isRechterMuisMetVoorwerp(event, activatieVoorwerp)) {
