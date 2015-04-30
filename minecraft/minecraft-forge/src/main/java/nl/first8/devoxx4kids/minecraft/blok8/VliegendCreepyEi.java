@@ -15,18 +15,17 @@ import net.minecraft.world.World;
 
 public class VliegendCreepyEi extends EntityThrowable {
 
-	private int explosieKracht = 2; // Kracht van de explosie
-	private boolean explosieBreekBlokken = true; // Breekt het ei ook blokken
-
 	protected void onImpact(MovingObjectPosition positie) {
 
-		maakExplosie(positie); // Maak een explosie
-		maakCreepy(positie); // Maak een nieuwe creeper
-		verwijderSneeuwbal(); // Verwijder de sneeuwbal
+		verwijderij(); // Verwijder het ei
+
+		// maakExplosie(positie, 2, false); // Maak een explosie
+		
+		// maakCreepy(positie); // Maak een nieuwe creeper
 
 	}
 
-	private void maakExplosie(MovingObjectPosition positie) {
+	private void maakExplosie(MovingObjectPosition positie, int explosieKracht, boolean explosieBreekBlokken) {
 		if (!this.worldObj.isRemote && positie.entityHit == null) {
 			BlockPos blockPos = positie.getBlockPos();
 			worldObj.createExplosion(this, d(blockPos.getX()),
@@ -65,7 +64,7 @@ public class VliegendCreepyEi extends EntityThrowable {
 		return new Integer(x).doubleValue();
 	}
 
-	private void verwijderSneeuwbal() {
+	private void verwijderij() {
 		this.setDead();
 
 	}

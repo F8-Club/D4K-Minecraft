@@ -46,7 +46,7 @@ public class BlokVuller {
 	@SubscribeEvent
 	public void kiesBlok(PlayerInteractEvent event) {
 		
-		// activeer(); //Zet deze aan om de blokvuller te activeren
+		activeer(); //Zet deze aan om de blokvuller te activeren
 
 		Item activatieVoorwerp = Items.diamond_shovel;
 		if (isRechterMuisMetVoorwerp(event, activatieVoorwerp)) {
@@ -109,7 +109,7 @@ public class BlokVuller {
 	}
 	
 	private boolean isRechterMuisMetVoorwerp(PlayerInteractEvent event, Item activatieVoorwerp) {
-		return actief && event.action == Action.RIGHT_CLICK_BLOCK && event.entityPlayer.getHeldItem() != null
+		return actief && !event.world.isRemote && event.action == Action.RIGHT_CLICK_BLOCK && event.entityPlayer.getHeldItem() != null
 				&& event.entityPlayer.getHeldItem().getItem() == activatieVoorwerp && event.entityPlayer.capabilities.isCreativeMode;
 	}
 
