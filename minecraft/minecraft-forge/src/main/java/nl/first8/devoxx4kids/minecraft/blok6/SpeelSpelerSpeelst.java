@@ -76,8 +76,7 @@ public class SpeelSpelerSpeelst {
 
 		float schade = 50F;
 
-		vampierAanval(speler, slachtoffer, schade); // Doe extra schade, en
-													// heal!
+		// vampierAanval(speler, slachtoffer, schade); // Doe extra schade, en heal!
 
 	}
 
@@ -96,7 +95,7 @@ public class SpeelSpelerSpeelst {
 	}
 
 	@SubscribeEvent
-	public void lach(PlayerTickEvent event) {
+	public void lach(KeyInputEvent event) {
 		if (varkenKey == null) {
 			varkenKey = vindVarkenKey();
 
