@@ -22,13 +22,13 @@ public class BoemExplosie extends EntityTNTPrimed
 	
 	private void explode()
     {
-        float explosieGrootte = 4.0F; //Pas deze waarde aan.. als je durft!
+        int explosieGrootte = 4; //Pas deze waarde aan.. als je durft!
         maakExplosie(explosieGrootte);
     }
 
 	
 	
-	private void maakExplosie(float explosie) {
+	private void maakExplosie(int explosie) {
 		this.worldObj.createExplosion(this, this.posX, this.posY + (double)(this.height / 2.0F), this.posZ, explosie, true);
 	}
 	

@@ -36,7 +36,7 @@ public class BlaBlok extends Block implements NamedModel {
 
 	private String name = "blaBlok"; //Hier niet aan zitten
 	
-	private float licht = 1.0F; //Hoeveel licht geeft het blok
+	private int licht = 0; //Hoeveel licht geeft het blok
 	private Item blokResultaatVoorwerp = Items.diamond; // Wat laat het blok vallen
 	private int blokResultaatAantal = 1;  // Hoeveel laat het blok vallen
 	private String blokKlikTekst = "Blaaahh!"; // Wat chat het blok?
